@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import  { useMemo } from 'react'
 import { OrderItems } from '../types'
 import { formatCurrency } from '../helpers'
 type OrderProps = {
