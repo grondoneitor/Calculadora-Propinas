@@ -1,11 +1,10 @@
 import MenuItems from "./components/MenuItems"
 import { menuItems } from "./data/db"
+import useOrder from "./hooks/useOrder"
+
 
 function App() {
-//   const [productos, setProductos] = useState([])
-
-// setProductos(menuItems)
-console.log(menuItems)
+const{addItem} = useOrder()
 
   return (
     <>
@@ -21,13 +20,12 @@ console.log(menuItems)
                     <MenuItems
                      key={item.id}
                      item={item}
+                     addItem={addItem}
                    />
                    ))}
              </div>
         </div>
-        <div>
-            <h2 className="text-4xl font-black mx-5">Consumo</h2>
-        </div>
+               <div className=" border border-dashed border-slate-300 p-5 rounded-lg"></div>
      </main>
     </>
   )
