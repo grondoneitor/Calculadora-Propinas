@@ -5,6 +5,7 @@ import { MenuItem } from "../types"
 
 export default function useOrder() {
     const[order,setOrder] = useState<OrderItems[]>([])
+    const[tip,setTip] = useState(0)
 
      const addItem = (item:MenuItem)=>
         {
@@ -35,9 +36,17 @@ export default function useOrder() {
         
         }
 
+           const calculando = (total: number)=>{
+             
+                 return total * tip
+          }
+
     return{
         order,
+        tip,
+        setTip,
         addItem,
-        removeItem
+        removeItem,
+         calculando
     }
 }

@@ -3,9 +3,10 @@ import { menuItems } from "./data/db"
 import useOrder from "./hooks/useOrder"
 import OrderContents from "./components/OrderContents"
 import OrderTotal from "./components/OrderTotal"
+import Tip from "./components/Tip"
 
 function App() {
-const{order,addItem,removeItem} = useOrder()
+const{order,setTip,addItem,removeItem,calculando} = useOrder()
 
   return (
     <>
@@ -33,8 +34,14 @@ const{order,addItem,removeItem} = useOrder()
                  removeItem={removeItem}
                 />
 
+                <Tip
+                // calculando10={calculando10}
+                  setTip={setTip}
+                />
+
                 <OrderTotal
                 order={order}
+                calculando={calculando}
                 />
         </div>
         <div>
