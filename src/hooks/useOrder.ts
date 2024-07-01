@@ -22,8 +22,22 @@ export default function useOrder() {
             }
         }
 
+
+        const removeItem = (item:MenuItem)=> {
+
+            const buscandoItem  = order.find(lista => (lista.id === item.id))
+             
+            if(buscandoItem){
+               const actualizandoArreglo  = order.filter(order=> order.id !== item.id )
+                setOrder(actualizandoArreglo)   
+            }
+            console.log("Eliminando")
+        
+        }
+
     return{
         order,
-        addItem
+        addItem,
+        removeItem
     }
 }
