@@ -32,13 +32,30 @@ export default function useOrder() {
                const actualizandoArreglo  = order.filter(order=> order.id !== item.id )
                 setOrder(actualizandoArreglo)   
             }
-            console.log("Eliminando")
         
         }
+        const restarItem= (item:OrderItems)=>{
+            const buscandoItem  = order.find(lista => (lista.id === item.id))
+            if(buscandoItem){
+               const actualizandoArreglo  = order.map(order=> order.id === item.id ?
+                 {...order, quantity: order.quantity-1}  :
+                  order  )
+                  setOrder(actualizandoArreglo)
+            }
+        }
+
+
+
 
            const calculando = (total: number)=>{
              
                  return total * tip
+          }
+
+          const placeOrden = ()=>{
+            setOrder([])
+            setTip(0)   
+
           }
 
     return{
@@ -47,6 +64,8 @@ export default function useOrder() {
         setTip,
         addItem,
         removeItem,
-         calculando
+        restarItem,
+         calculando,
+         placeOrden
     }
 }

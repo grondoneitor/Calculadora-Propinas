@@ -6,7 +6,7 @@ import OrderTotal from "./components/OrderTotal"
 import Tip from "./components/Tip"
 
 function App() {
-const{order,setTip,addItem,removeItem,calculando} = useOrder()
+const{order,tip,setTip,addItem,removeItem,restarItem,calculando,placeOrden} = useOrder()
 
   return (
     <>
@@ -29,20 +29,31 @@ const{order,setTip,addItem,removeItem,calculando} = useOrder()
              </div>
         </div>
         <div className=" border border-dashed border-slate-300 p-5 rounded-lg">
-                <OrderContents
+              
+              {order.length > 0 ? 
+                 (<>
+                              <OrderContents
                  order={order}
                  removeItem={removeItem}
+                 restarItem={restarItem}
+                 addItem={addItem}
                 />
 
                 <Tip
                 // calculando10={calculando10}
                   setTip={setTip}
+                  tip={tip}
                 />
 
                 <OrderTotal
                 order={order}
                 calculando={calculando}
+                placeOrden={placeOrden} 
                 />
+              </> ):
+               <p className="text-center">La orden esta vacia</p> 
+              }
+
         </div>
         <div>
 
